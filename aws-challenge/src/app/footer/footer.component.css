@@ -1,0 +1,11 @@
+.app-footer-container{
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+}
+
+.app-footer-container span {
+  font-size: 12px;
+  font-weight: bold;
+}
