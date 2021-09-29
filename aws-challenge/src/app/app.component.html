@@ -1,10 +1,58 @@
 
-<div class="main-container">
-  <app-header></app-header>
-  <h1>App</h1>
-  <router-outlet></router-outlet>
+<div class="main-container box">
+  <app-header [sidenav]="sidenav" class="header"></app-header>
 
-  <app-footer></app-footer>
+ <mat-sidenav-container class="content">
+    <mat-sidenav #sidenav class="w-30p">
+
+      <mat-list>
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>home</mat-icon>
+          <span class="ml-15">
+            <a>Home</a>
+          </span>
+
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>devices</mat-icon>
+          <span class="ml-15">
+            <a>Manage Devices</a>
+          </span>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>category</mat-icon>
+          <span class="ml-15">
+            <a>Manage Categories</a>
+          </span>
+
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <mat-list-item (click)="sidenav.toggle()">
+          <mat-icon>info</mat-icon>
+          <span class="ml-15">
+            <a>About</a>
+          </span>
+
+        </mat-list-item>
+      </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="intern-container">
+      <h1>Teste som</h1>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+  <app-footer class="footer"></app-footer>
 </div>
 
 

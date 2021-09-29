@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
 
 @Component({
@@ -8,13 +8,15 @@ import {MatSidenav} from '@angular/material/sidenav';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() sidenav!: MatSidenav;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
   public openSideNav(){
-
+    this.sidenav.toggle();
   }
 
 }

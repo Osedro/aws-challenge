@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'aws-challenge';
+  public isDisabled = false;
+  public events: string[] = [];
+  public opened: boolean = false;
 }

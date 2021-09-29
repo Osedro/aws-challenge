@@ -3,6 +3,8 @@
   position: absolute;
   bottom: 0px;
   background-color: white;
+  height: 40px;
+  flex-grow: 0;
 }
 
 .app-footer-container span {

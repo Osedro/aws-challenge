@@ -1,0 +1,58 @@
+.main-container{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.intern-container{
+  display: flex;
+  grid-row: auto;
+  background-color: white;
+  flex-grow: 1;
+  flex-basis: auto;
+}
+
+a{
+  color: black;
+  text-decoration: none;
+}
+
+a:hover{
+  font-size: 18px;
+}
+
+.style-1 {
+  font-size: 20px;
+  font-weight: bold;
+  color: green;
+}
+
+.style-2 {
+  font-size: 18px;
+  color: blueviolet;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100vh;
+}
+
+.box .header {
+  flex-grow: 0;
+  flex-basis: auto;
+}
+
+.box .content {
+  flex-grow: 1;
+  flex-basis: auto;
+}
+
+.box .footer {
+  flex-grow: 0;
+  flex-basis: 40px;
+}
