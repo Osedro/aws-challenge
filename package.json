@@ -1,0 +1,27 @@
+{
+  "name": "server-aws-challenge",
+  "version": "1.0.0",
+  "description": "Server of web app for device management",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js localhost 3080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Osedro/aws-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Osedro/aws-challenge/issues"
+  },
+  "homepage": "https://github.com/Osedro/aws-challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
