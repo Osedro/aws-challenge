@@ -14,7 +14,16 @@
   background-color: white;
   flex-grow: 1;
   flex-basis: auto;
+  align-items: center;
+  justify-content: center;
 }
+
+.intern-container button{
+  display: flex;
+  margin: 20px;
+  height: 40px;
+}
+
 
 a{
   color: black;
@@ -56,3 +65,9 @@ a:hover{
   flex-grow: 0;
   flex-basis: 40px;
 }
+
+.home-button{
+  font-size: 24px;
+}
+
+
