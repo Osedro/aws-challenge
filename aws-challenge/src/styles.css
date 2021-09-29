@@ -12,7 +12,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .w-100{
-  width: 100%;
+  width: 100% !important;
 }
 
 .ml-15{
@@ -20,8 +20,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .m-40{
+  margin: 20px;
   width: 400px !important;
-  margin-top: 300px;
   background-color: #3F51B5;
 }
 
