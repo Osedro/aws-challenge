@@ -1,1 +1,60 @@
-<p>device works!</p>
+<div>
+  <mat-card  class="device-card">
+    <mat-card-header>
+      <mat-card-title style="color: white;">
+        Device Manager
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-actions>
+      <a mat-raised-button color="accent" [routerLink]="['/']">Home</a>
+      <a mat-raised-button color="accent" (click)="createNewDevice()">New Device</a>
+    </mat-card-actions>
+
+    <mat-card-content>
+
+    </mat-card-content>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">Id.</th>
+        <td mat-cell *matCellDef="let element; let i = index" class="column-align"> {{i}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">Name</th>
+        <td mat-cell *matCellDef="let element" class="column-align"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">Category</th>
+        <td mat-cell *matCellDef="let element" class="column-align"> {{element.category}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="color">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">Color</th>
+        <td mat-cell *matCellDef="let element" class="column-align"> {{element.color}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="partNumber">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">PartNumber</th>
+        <td mat-cell *matCellDef="let element" class="column-align"> {{element.partNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef  class="column-align">Actions</th>
+        <td mat-cell *matCellDef="let element" class="column-align">
+          <button (click)="editDevice(element)" mat-raised-button color="accent" class="actions-buttons">Editar</button>
+          <button (click)="deleteDevice(element)" mat-raised-button color="warn" class="actions-buttons">Apagar</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+    </table>
+
+  </mat-card>
+</div>
+
+

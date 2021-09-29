@@ -1,0 +1,13 @@
+.column-align{
+  text-align: center;
+}
+
+.actions-buttons{
+  margin-right: 10px !important;
+}
+
+.device-card{
+  margin: 20px;
+  width: 600px !important;
+  background-color: #3F51B5;
+}
