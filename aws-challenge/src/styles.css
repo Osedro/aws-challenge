@@ -19,11 +19,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-left: 15px;
 }
 
-.m-40{
-  margin: 20px;
-  width: 400px !important;
-  background-color: #3F51B5;
-}
+
 
 .flx-cnter-row{
   display: flex !important;

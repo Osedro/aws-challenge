@@ -7,3 +7,8 @@
 }
 
 
+.category-card{
+  margin: 20px;
+  width: 400px !important;
+  background-color: #3F51B5;
+}
