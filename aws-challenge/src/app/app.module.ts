@@ -10,6 +10,10 @@ import { FooterComponent } from './footer/footer.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { CategoryComponent } from './category/category.component';
+import { DeviceComponent } from './device/device.component';
+import { AboutComponent } from './about/about.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CategoryComponent,
+    DeviceComponent,
+    AboutComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

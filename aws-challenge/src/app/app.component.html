@@ -6,10 +6,11 @@
     <mat-sidenav #sidenav class="w-30p">
 
       <mat-list>
+        <mat-divider></mat-divider>
         <mat-list-item (click)="sidenav.toggle()">
-          <mat-icon>home</mat-icon>
+          <mat-icon class="icon-color">home</mat-icon>
           <span class="ml-15">
-            <a>Home</a>
+            <a [routerLink]="['/']" class="menu-text-color">Home</a>
           </span>
 
         </mat-list-item>
@@ -17,18 +18,18 @@
         <mat-divider></mat-divider>
 
         <mat-list-item (click)="sidenav.toggle()">
-          <mat-icon>devices</mat-icon>
-          <span class="ml-15">
-            <a>Manage Devices</a>
+          <mat-icon class="icon-color">devices</mat-icon>
+          <span class="ml-15" >
+            <a [routerLink]="['/device']" class="menu-text-color">Manage Devices</a>
           </span>
         </mat-list-item>
 
         <mat-divider></mat-divider>
 
         <mat-list-item (click)="sidenav.toggle()">
-          <mat-icon>category</mat-icon>
+          <mat-icon class="icon-color">category</mat-icon>
           <span class="ml-15">
-            <a>Manage Categories</a>
+            <a [routerLink]="['/category']" class="menu-text-color">Manage Categories</a>
           </span>
 
         </mat-list-item>
@@ -36,12 +37,13 @@
         <mat-divider></mat-divider>
 
         <mat-list-item (click)="sidenav.toggle()">
-          <mat-icon>info</mat-icon>
+          <mat-icon class="icon-color">info</mat-icon>
           <span class="ml-15">
-            <a>About</a>
+            <a [routerLink]="['/about']" class="menu-text-color">About</a>
           </span>
-
         </mat-list-item>
+
+        <mat-divider></mat-divider>
       </mat-list>
     </mat-sidenav>
 
@@ -52,7 +54,6 @@
 
   </mat-sidenav-container>
 
-  <app-footer class="footer"></app-footer>
 
 </div>
 

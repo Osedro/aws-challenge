@@ -4,12 +4,33 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .w-30p{
-  width: 30%;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #3F51B5;
+}
+
+.w-100{
+  width: 100%;
 }
 
 .ml-15{
   margin-left: 15px;
+}
+
+.m-40{
+  width: 400px !important;
+  margin-top: 300px;
+  background-color: #3F51B5;
+}
+
+.flx-cnter-row{
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flx-evly{
+  justify-content: space-evenly;
 }

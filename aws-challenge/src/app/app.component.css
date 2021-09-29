@@ -32,6 +32,7 @@ a{
 
 a:hover{
   font-size: 18px;
+  color: #FF4081;
 }
 
 .style-1 {
@@ -66,6 +67,13 @@ a:hover{
   flex-basis: 40px;
 }
 
+.icon-color{
+  color: white;
+}
+
+.menu-text-color{
+  color: white;
+}
 
 
 
