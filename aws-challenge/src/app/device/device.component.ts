@@ -48,6 +48,10 @@ export class DeviceComponent implements OnInit {
     console.log("Create device clicked")
   }
 
+  public updateDevices(){
+    console.log("Updanting devices...")
+  }
+
 }
 
 

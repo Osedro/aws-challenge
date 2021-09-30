@@ -58,4 +58,8 @@ export class CategoryComponent implements OnInit {
     console.log("Create category clicked")
   }
 
+  public updateCategories(){
+    console.log("Updanting categories")
+  }
+
 }
