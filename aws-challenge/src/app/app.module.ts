@@ -14,6 +14,8 @@ import { CategoryComponent } from './category/category.component';
 import { DeviceComponent } from './device/device.component';
 import { AboutComponent } from './about/about.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { DeviceDialogComponent } from './device-dialog/device-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { DialogComponent } from './dialog/dialog.component';
     CategoryComponent,
     DeviceComponent,
     AboutComponent,
-    DialogComponent
+    DialogComponent,
+    DeviceDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatSidenavModule
+    MatSidenavModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
