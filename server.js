@@ -75,12 +75,20 @@ app.get('/devicedelete/:id', (req,res) => {
   }, function(err){
       console.log(err); 
   })
-
   Devices.findAll({raw: true}).then(devices => {
     res.status(200).send(devices)
   })
-  
-  
+})
+
+app.get("/devicecreate", (req,res) => {
+  Devices.create({
+      name: "Teste",
+      category: "Teste",
+      color: "Teste",
+      partNumber: 123
+  }).then(() => {
+      console.log("Aumentando o DB")
+  })
 })
 
 app.listen(port, () => {

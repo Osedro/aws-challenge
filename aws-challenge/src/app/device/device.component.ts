@@ -44,19 +44,6 @@ export class DeviceComponent implements OnInit {
         if(resp == true){
           this.dataSource = []
           this.deviceService.delDevice(device.id).subscribe(devices => {
-            /*
-            for(let i = 0 ; i < devices.length ; i++){
-              var dev = new Device()
-
-              dev.name = devices[i].name
-              dev.category = devices[i].category
-              dev.color = devices[i].color
-              dev.partNumber = devices[i].partNumber
-              dev.id = devices[i].id
-              this.dataSource.push(dev)
-            }
-            this.table.renderRows();
-            */
             this.updateDevices()
           })
           console.log("Device apagado com sucesso!");
@@ -74,6 +61,9 @@ export class DeviceComponent implements OnInit {
       data: {dialogMsg: 'New Device', leftButtonLabel: 'Cancel', rightButtonLabel: 'Create'}}).afterClosed().subscribe(
       resp => {
         if(resp == true){
+          this.deviceService.createDevice().subscribe(devices => {
+            this.updateDevices()
+          })
           console.log("Device criado com sucesso!");
         }else{
           console.log("Criação do device cancelada!");
