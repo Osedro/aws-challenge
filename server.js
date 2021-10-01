@@ -57,17 +57,30 @@ app.post("/device", (req,res) =>{
 
 
 app.get("/deviceread", (req,res) => {
-  Devices.findAll({raw: true}).then(perguntas => {
-    res.status(200).send(perguntas)
+  Devices.findAll({raw: true}).then(devices => {
+    res.status(200).send(devices)
   })
 })
 
-app.get('/deviceerr', (req,res) => {
-  setTimeout(() => {
-    res.status(500).send({
-      msg: "Error msg from the server"
-    })
-  },2000)
+app.get('/devicedelete/:id', (req,res) => {
+  console.log(req.params.id)
+  Devices.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(rowDeleted){ // rowDeleted will return number of rows deleted
+    if(rowDeleted === 1){
+       console.log('Deleted successfully');
+     }
+  }, function(err){
+      console.log(err); 
+  })
+
+  Devices.findAll({raw: true}).then(devices => {
+    res.status(200).send(devices)
+  })
+  
+  
 })
 
 app.listen(port, () => {

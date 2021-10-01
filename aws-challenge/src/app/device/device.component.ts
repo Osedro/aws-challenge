@@ -1,16 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Device } from '../_models/device';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DeviceDialogComponent } from '../device-dialog/device-dialog.component';
 import { DeviceServiceService } from '../device-service.service';
+import { MatTable } from '@angular/material/table';
 
-export var DEVICE_DATA = [
-  {name:'MacBook', category: 'Notebook', color:'red', partNumber:'123456789', id: 1},
-  {name:'ZenPhone', category: 'Notebook', color:'red', partNumber:'123456789', id: 1},
-  {name:'Trabalho', category: 'Notebook', color:'red', partNumber:'123456789', id: 1},
-  {name:'Outros', category: 'Notebook', color:'red', partNumber:'123456789', id: 1},
-];
 
 
 @Component({
@@ -18,17 +13,23 @@ export var DEVICE_DATA = [
   templateUrl: './device.component.html',
   styleUrls: ['./device.component.css']
 })
-
 export class DeviceComponent implements OnInit {
 
   public displayedColumns2: string[] = ['id','name', 'category', 'color', 'partNumber', 'actions'];
   public dataSource: Device[] = [];
 
-  constructor(private dialog: MatDialog, private deviceService: DeviceServiceService) { }
+  @ViewChild(MatTable) table!: MatTable<any>;
+
+  constructor(private dialog: MatDialog,
+    private deviceService: DeviceServiceService
+    ) {
+
+    }
 
   ngOnInit(): void {
 
   }
+
 
 
   public editDevice(device: Device){
@@ -36,16 +37,36 @@ export class DeviceComponent implements OnInit {
   }
 
   public deleteDevice(device: Device){
+
     this.dialog.open(DialogComponent,{disableClose:true,
       data: {dialogMsg: 'Você tem certeza que gostaria de apagar a categoria?', leftButtonLabel: 'Cancelar', rightButtonLabel: 'Sim'}}).afterClosed().subscribe(
       resp => {
         if(resp == true){
-          console.log("Categoria apagada com sucesso!");
+          this.dataSource = []
+          this.deviceService.delDevice(device.id).subscribe(devices => {
+            /*
+            for(let i = 0 ; i < devices.length ; i++){
+              var dev = new Device()
+
+              dev.name = devices[i].name
+              dev.category = devices[i].category
+              dev.color = devices[i].color
+              dev.partNumber = devices[i].partNumber
+              dev.id = devices[i].id
+              this.dataSource.push(dev)
+            }
+            this.table.renderRows();
+            */
+            this.updateDevices()
+          })
+          console.log("Device apagado com sucesso!");
+
         }else{
-          console.log("Categoria não apagada");
+          console.log("Device não apagada");
         }
       }
     )
+
   }
 
   public createNewDevice(){
@@ -63,6 +84,7 @@ export class DeviceComponent implements OnInit {
 
   public updateDevices(){
     console.log("Updanting devices...")
+    this.dataSource = []
     this.deviceService.getDevices().subscribe(devices => {
 
       for(let i = 0 ; i < devices.length ; i++){
@@ -75,7 +97,9 @@ export class DeviceComponent implements OnInit {
         dev.id = devices[i].id
         this.dataSource.push(dev)
       }
+      this.table.renderRows();
     })
+
 
   }
 

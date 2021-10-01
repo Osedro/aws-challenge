@@ -17,7 +17,8 @@ export class DeviceServiceService {
     return this.http.get<Device[]>(`${this.url}/deviceread`);
   }
 
-  getDevicesError(): Observable<Device[]> {
-    return this.http.get<Device[]>(`${this.url}/deviceerr`);
+  delDevice(id: any): Observable<Device[]> {
+    console.log(`${this.url}/devicedelete/${id}`)
+    return this.http.get<Device[]>(`${this.url}/devicedelete/${id}`);
   }
 }
