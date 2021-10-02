@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +15,9 @@ import { AboutComponent } from './about/about.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { DeviceDialogComponent } from './device-dialog/device-dialog.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CategoryDialogDelComponent } from './category-dialog-del/category-dialog-del.component';
+import { CategoryDialogCreateComponent } from './category-dialog-create/category-dialog-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HttpClientModule } from '@angular/common/http';
     DeviceComponent,
     AboutComponent,
     DialogComponent,
-    DeviceDialogComponent
+    DeviceDialogComponent,
+    CategoryDialogDelComponent,
+    CategoryDialogCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     MatSidenavModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

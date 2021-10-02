@@ -1,26 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Category } from '../_models/category';
 import { DialogComponent } from '../dialog/dialog.component';
-
-export const CATEGORY_DATA = [
-  {name:'Educação', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Saúde', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Trabalho', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-  {name:'Outros', guid:'aaaa-bbbbb-cccc-dddd'},
-];
+import { CategoryServiceService } from '../category-service.service';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-category',
@@ -30,11 +13,17 @@ export const CATEGORY_DATA = [
 export class CategoryComponent implements OnInit {
 
   public displayedColumns: string[] = ['id', 'name', 'actions'];
-  public dataSource: Category[] = CATEGORY_DATA;
+  public dataSource: Category[] = [];
 
-  constructor(private dialog: MatDialog) { }
+  @ViewChild(MatTable) table!: MatTable<any>;
+
+  constructor(private dialog: MatDialog,
+    private categoryService: CategoryServiceService) {
+
+    }
 
   ngOnInit(): void {
+    this.updateCategories()
   }
 
   public editCategory(category: Category){
@@ -46,6 +35,10 @@ export class CategoryComponent implements OnInit {
       data: {dialogMsg: 'Você tem certeza que gostaria de apagar a categoria?', leftButtonLabel: 'Cancelar', rightButtonLabel: 'Sim'}}).afterClosed().subscribe(
       resp => {
         if(resp == true){
+          this.dataSource = []
+          this.categoryService.delCategory(category.id).subscribe(categories => {
+            this.updateCategories()
+          })
           console.log("Categoria apagada com sucesso!");
         }else{
           console.log("Categoria não apagada");
@@ -59,7 +52,18 @@ export class CategoryComponent implements OnInit {
   }
 
   public updateCategories(){
-    console.log("Updanting categories")
+    console.log("Updanting categories...")
+    this.dataSource = []
+    this.categoryService.getCategories().subscribe(categories => {
+      for(let i = 0 ; i < categories.length ; i++){
+        var cat = new Category()
+
+        cat.name = categories[i].name
+        cat.id = categories[i].id
+        this.dataSource.push(cat)
+      }
+      this.table.renderRows();
+    })
   }
 
 }

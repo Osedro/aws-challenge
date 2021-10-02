@@ -1,0 +1,8 @@
+.w-300{
+  width: 300px;
+}
+
+.column-lign{
+  display: flex;
+  flex-direction: column;
+}

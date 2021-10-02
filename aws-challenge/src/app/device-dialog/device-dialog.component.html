@@ -1,13 +1,46 @@
 <div>
-  <mat-card-content>
-    <p>{{dialogMsg}}</p>
-    <hr>
-    <input type="text" placeholder="Name" name="name" class="form-control">
-  </mat-card-content>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <p>{{dialogMsg}}</p>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="createDeviceForm" #deviceFormDirective="ngForm" action="">
+        <div class="column-lign">
+          <mat-form-field class="w-300">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
 
-  <mat-card-actions class="flx-cnter-row flx-evly">
-    <button mat-raised-button color="warn" (click)="clickLeftButton()">{{leftButtonLabel}}</button>
-    <button mat-raised-button color="primary" (click)="clickRightButton()">{{rightButtonLabel}}</button>
-  </mat-card-actions>
+          <mat-form-field class="w-300">
+            <mat-label>Color</mat-label>
+            <input matInput type="text" formControlName="color">
+          </mat-form-field>
+
+          <mat-form-field class="w-300">
+            <mat-label>PartNumber</mat-label>
+            <input matInput type="text" formControlName="partNumber">
+          </mat-form-field>
+
+          <mat-form-field class="w-300" appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+      </form>
+    </mat-card-content>
+
+    <mat-card-actions class="flx-cnter-row flx-evly">
+      <button mat-raised-button color="warn" (click)="clickLeftButton()">{{leftButtonLabel}}</button>
+      <button mat-raised-button color="primary" (click)="clickRightButton()">{{rightButtonLabel}}</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
 

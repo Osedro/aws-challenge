@@ -6,6 +6,7 @@ const connection = require("./database/database")
 const deviceModel = require("./database/Devices")
 const categoryModel = require("./database/Categories")
 const Devices = require("./database/Devices")
+const Categories = require("./database/Categories")
 const cors = require('cors')
 
 
@@ -40,6 +41,7 @@ app.get('/device', (req,res) => {
 });
 
 app.get('/category', (req,res) => {
+  
     console.log("Entrando na category")
     res.sendFile(process.cwd()+"/aws-challenge/dist/aws-challenge/index.html")
 });
@@ -62,8 +64,13 @@ app.get("/deviceread", (req,res) => {
   })
 })
 
+app.get("/categoryread", (req,res) => {
+  Categories.findAll({raw: true}).then(categories => {
+    res.status(200).send(categories)
+  })
+})
+
 app.get('/devicedelete/:id', (req,res) => {
-  console.log(req.params.id)
   Devices.destroy({
     where: {
       id: req.params.id
@@ -80,6 +87,23 @@ app.get('/devicedelete/:id', (req,res) => {
   })
 })
 
+app.get('/categorydelete/:id', (req,res) => {
+  Categories.destroy({
+    where: {
+      id: req.params.id
+    }
+  }).then(function(rowDeleted){ // rowDeleted will return number of rows deleted
+    if(rowDeleted === 1){
+       console.log('Deleted successfully');
+     }
+  }, function(err){
+      console.log(err); 
+  })
+  Categories.findAll({raw: true}).then(categories => {
+    res.status(200).send(categories)
+  })
+})
+
 app.get("/devicecreate", (req,res) => {
   Devices.create({
       name: "Teste",
@@ -88,6 +112,10 @@ app.get("/devicecreate", (req,res) => {
       partNumber: 123
   }).then(() => {
       console.log("Aumentando o DB")
+      Devices.findAll({raw: true}).then(devices => {
+        
+        res.status(200).send(devices)
+      })
   })
 })
 

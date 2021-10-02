@@ -27,19 +27,13 @@ export class DeviceComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
-  }
-
-
-
-  public editDevice(device: Device){
-    console.log("Edit device clicked")
+    this.updateDevices()
   }
 
   public deleteDevice(device: Device){
 
     this.dialog.open(DialogComponent,{disableClose:true,
-      data: {dialogMsg: 'Você tem certeza que gostaria de apagar a categoria?', leftButtonLabel: 'Cancelar', rightButtonLabel: 'Sim'}}).afterClosed().subscribe(
+      data: {dialogMsg: 'Are you sure you would like to delete the device?', leftButtonLabel: 'Cancel', rightButtonLabel: 'Sim'}}).afterClosed().subscribe(
       resp => {
         if(resp == true){
           this.dataSource = []
@@ -76,7 +70,6 @@ export class DeviceComponent implements OnInit {
     console.log("Updanting devices...")
     this.dataSource = []
     this.deviceService.getDevices().subscribe(devices => {
-
       for(let i = 0 ; i < devices.length ; i++){
         var dev = new Device()
 
