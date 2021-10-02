@@ -10,22 +10,22 @@
         <div class="column-lign">
           <mat-form-field class="w-300">
             <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name">
+            <input matInput type="text" formControlName="name" placeholder="Name">
           </mat-form-field>
 
           <mat-form-field class="w-300">
             <mat-label>Color</mat-label>
-            <input matInput type="text" formControlName="color">
+            <input matInput type="text" formControlName="color" placeholder="Color(Max 16 characters)" maxlength="16">
           </mat-form-field>
 
           <mat-form-field class="w-300">
             <mat-label>PartNumber</mat-label>
-            <input matInput type="text" formControlName="partNumber">
+            <input matInput type="number" formControlName="partNumber" placeholder="PartNumber(Only numbers)">
           </mat-form-field>
 
-          <mat-form-field class="w-300" appearance="fill">
+          <mat-form-field class="w-300" appearance="fill" >
             <mat-label>Category</mat-label>
-            <mat-select>
+            <mat-select formControlName="category">
               <mat-option *ngFor="let category of categories" [value]="category">
                 {{category}}
               </mat-option>

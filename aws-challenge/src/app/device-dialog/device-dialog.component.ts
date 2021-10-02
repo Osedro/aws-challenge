@@ -39,10 +39,10 @@ export class DeviceDialogComponent implements OnInit {
       }
 
       this.createDeviceForm = this.formBuilder.group({
-        name: 'Name',
-        category: 'Category',
-        color: 'Color',
-        partNumber: 'partNumber'
+        name: '',
+        category: '',
+        color: '',
+        partNumber: ''
       })
     }
 
@@ -60,7 +60,18 @@ export class DeviceDialogComponent implements OnInit {
 
   // Criar novo device
   public clickRightButton(){
-    this.dialogRef.close(true);
+    let dev = new Device
+    dev.name = this.createDeviceForm.getRawValue().name
+    dev.color = this.createDeviceForm.getRawValue().color
+    dev.partNumber = this.createDeviceForm.getRawValue().partNumber
+    dev.category = this.createDeviceForm.getRawValue().category
+
+    console.log(this.createDeviceForm.getRawValue())
+
+
+    this.deviceService.createDevice(dev).subscribe(devices => {
+      this.dialogRef.close(true);
+    })
   }
 
   // Cancelar

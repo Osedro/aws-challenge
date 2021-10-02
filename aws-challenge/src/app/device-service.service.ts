@@ -17,8 +17,8 @@ export class DeviceServiceService {
     return this.http.get<Device[]>(`${this.url}/deviceread`);
   }
 
-  createDevice(): Observable<Device[]> {
-    return this.http.get<Device[]>(`${this.url}/devicecreate`);
+  createDevice(dev: Device): Observable<Device[]> {
+    return this.http.post<Device[]>(`${this.url}/devicecreate`, dev);
   }
 
   delDevice(id: any): Observable<Device[]> {

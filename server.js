@@ -104,24 +104,23 @@ app.get('/categorydelete/:id', (req,res) => {
   })
 })
 
-app.get("/categorycreate/:name", (req,res) => {
+app.post("/categorycreate", (req,res) => {
   Categories.create({
-      name: req.params.name,
+      name: req.body.name,
   }).then(() => {
       console.log("Aumentando o DB")
       Categories.findAll({raw: true}).then(categories => {
-        
         res.status(200).send(categories)
       })
   })
 })
 
-app.get("/devicecreate", (req,res) => {
+app.post("/devicecreate", (req,res) => {
   Devices.create({
-      name: "Teste",
-      category: "Teste",
-      color: "Teste",
-      partNumber: 123
+      name: req.body.name,
+      category: req.body.category,
+      color: req.body.color,
+      partNumber: req.body.partNumber
   }).then(() => {
       console.log("Aumentando o DB")
       Devices.findAll({raw: true}).then(devices => {

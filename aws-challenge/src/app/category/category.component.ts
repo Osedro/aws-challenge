@@ -27,10 +27,6 @@ export class CategoryComponent implements OnInit {
     this.updateCategories()
   }
 
-  public editCategory(category: Category){
-    console.log("Edit category clicked")
-  }
-
   public deleteCategory(category: Category){
     this.dialog.open(DialogComponent,{disableClose:true,
       data: {dialogMsg: 'Você tem certeza que gostaria de apagar a categoria?', leftButtonLabel: 'Cancelar', rightButtonLabel: 'Sim'}}).afterClosed().subscribe(

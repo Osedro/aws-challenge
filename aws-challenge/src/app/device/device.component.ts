@@ -55,9 +55,8 @@ export class DeviceComponent implements OnInit {
       data: {dialogMsg: 'New Device', leftButtonLabel: 'Cancel', rightButtonLabel: 'Create'}}).afterClosed().subscribe(
       resp => {
         if(resp == true){
-          this.deviceService.createDevice().subscribe(devices => {
-            this.updateDevices()
-          })
+          this.updateDevices()
+
           console.log("Device criado com sucesso!");
         }else{
           console.log("Criação do device cancelada!");
