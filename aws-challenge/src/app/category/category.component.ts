@@ -4,6 +4,7 @@ import { Category } from '../_models/category';
 import { DialogComponent } from '../dialog/dialog.component';
 import { CategoryServiceService } from '../category-service.service';
 import { MatTable } from '@angular/material/table';
+import { CategoryDialogCreateComponent } from '../category-dialog-create/category-dialog-create.component';
 
 @Component({
   selector: 'app-category',
@@ -48,7 +49,17 @@ export class CategoryComponent implements OnInit {
   }
 
   public createNewCategory(){
-    console.log("Create category clicked")
+    this.dialog.open(CategoryDialogCreateComponent,{disableClose:true,
+      data: {dialogMsg: 'New Category', leftButtonLabel: 'Cancel', rightButtonLabel: 'Create'}}).afterClosed().subscribe(
+      resp => {
+        if(resp == true){
+          this.updateCategories()
+          console.log("Device criado com sucesso!");
+        }else{
+          console.log("Criação do device cancelada!");
+        }
+      }
+    )
   }
 
   public updateCategories(){

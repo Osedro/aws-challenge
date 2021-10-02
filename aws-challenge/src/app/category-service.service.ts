@@ -16,8 +16,8 @@ export class CategoryServiceService {
     return this.http.get<Category[]>(`${this.url}/categoryread`);
   }
 
-  createCategory(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.url}/categorycreate`);
+  createCategory(name: String): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.url}/categorycreate/${name}`);
   }
 
   delCategory(id: any): Observable<Category[]> {

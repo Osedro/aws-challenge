@@ -104,6 +104,18 @@ app.get('/categorydelete/:id', (req,res) => {
   })
 })
 
+app.get("/categorycreate/:name", (req,res) => {
+  Categories.create({
+      name: req.params.name,
+  }).then(() => {
+      console.log("Aumentando o DB")
+      Categories.findAll({raw: true}).then(categories => {
+        
+        res.status(200).send(categories)
+      })
+  })
+})
+
 app.get("/devicecreate", (req,res) => {
   Devices.create({
       name: "Teste",
