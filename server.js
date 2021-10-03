@@ -17,13 +17,11 @@ connection.authenticate().then(() => {
     console.log(msgErro)
 })
 
-
 app.use(bodyParser.json());
 app.use(express.static(process.cwd()+"/aws-challenge/dist/aws-challenge/"));
 app.use(cors())
 
 app.get('/', (req,res) => {
-    console.log("Entrando na home")
     res.sendFile(process.cwd()+"/aws-challenge/dist/aws-challenge/index.html",)
 });
 
