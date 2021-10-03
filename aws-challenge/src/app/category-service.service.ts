@@ -8,7 +8,8 @@ import { Category } from './_models/category';
 })
 export class CategoryServiceService {
 
-  readonly url: string= 'http://localhost:3080'
+  //readonly url: string= 'http://localhost:3080'
+  readonly url: string= 'http://67.205.158.161:3080'
 
   constructor(private http: HttpClient) { }
 

@@ -9,7 +9,8 @@ import { Device } from './_models/device';
 })
 export class DeviceServiceService {
 
-  readonly url: string= 'http://localhost:3080'
+  //readonly url: string= 'http://localhost:3080'
+  readonly url: string= 'http://67.205.158.161:3080'
 
   constructor(private http: HttpClient) { }
 

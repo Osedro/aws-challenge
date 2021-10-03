@@ -57,12 +57,14 @@ app.post("/device", (req,res) =>{
 
 
 app.get("/deviceread", (req,res) => {
+  console.log("Requisição de devices realizada!")
   Devices.findAll({raw: true}).then(devices => {
     res.status(200).send(devices)
   })
 })
 
 app.get("/categoryread", (req,res) => {
+  console.log("Requisição de categories realizada!")
   Categories.findAll({raw: true}).then(categories => {
     res.status(200).send(categories)
   })

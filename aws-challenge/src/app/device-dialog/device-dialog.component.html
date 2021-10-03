@@ -15,7 +15,7 @@
 
           <mat-form-field class="w-300">
             <mat-label>Color</mat-label>
-            <input matInput type="text" formControlName="color" placeholder="Color(Max 16 characters)" maxlength="16">
+            <input matInput type="text" formControlName="color" placeholder="Color(Max 16 characters)" maxlength="16" (keypress)="keyPressAlphaNumericWithCharacters($event)">
           </mat-form-field>
 
           <mat-form-field class="w-300">

@@ -47,11 +47,11 @@ export class CategoryDialogCreateComponent implements OnInit {
   }
   // Criar novo device
   public clickRightButton(){
-    this.categoryService.createCategory(this.createCategoryForm.getRawValue().name).subscribe(() => {
-      this.dialogRef.close(true);
-    })
-
-
+    if(this.createCategoryForm.getRawValue().name != ''){
+      this.categoryService.createCategory(this.createCategoryForm.getRawValue().name).subscribe(() => {
+        this.dialogRef.close(true);
+      })
+    }
   }
 
   // Cancelar

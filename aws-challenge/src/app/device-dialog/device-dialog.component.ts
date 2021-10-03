@@ -78,4 +78,16 @@ export class DeviceDialogComponent implements OnInit {
   public clickLeftButton(){
     this.dialogRef.close(false);
   }
+
+  public keyPressAlphaNumericWithCharacters(event: { keyCode: number; preventDefault: () => void; }) {
+
+    var inp = String.fromCharCode(event.keyCode);
+    // Allow numbers, alpahbets, space, underscore
+    if (/[a-zA-Z-_ ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  }
 }
