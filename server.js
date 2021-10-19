@@ -27,19 +27,10 @@ app.get('/', (req,res) => {
 
 app.get('/device', (req,res) => {
     console.log("Entrando no device")
-    Devices.create({
-        name: "Teste",
-        category: "Teste",
-        color: "Teste",
-        partNumber: 123
-    }).then(() => {
-        console.log("Aumentando o DB")
-    })
     res.sendFile(process.cwd()+"/aws-challenge/dist/aws-challenge/index.html")
 });
 
 app.get('/category', (req,res) => {
-  
     console.log("Entrando na category")
     res.sendFile(process.cwd()+"/aws-challenge/dist/aws-challenge/index.html")
 });
